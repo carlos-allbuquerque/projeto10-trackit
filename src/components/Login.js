@@ -42,9 +42,6 @@ export default function Login() {
 
     }
 
-    function Logon() {
-        useNavigate("/hoje");
-    }
 
 
     return(

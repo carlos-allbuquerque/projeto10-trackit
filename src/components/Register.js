@@ -9,7 +9,6 @@ import UserContext from "../contexts/UserContext";
 export default function Register() {
 
     const {user, setUser} = useContext(UserContext);
-    console.log(user);
     const [userData, setUserData] = useState(
         {
             email:"",

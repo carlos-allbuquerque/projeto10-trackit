@@ -9,6 +9,8 @@ import "react-loader-spinner";
 import { useState } from "react";
 import UserContext from "./contexts/UserContext";
 import HabitsContext from "./contexts/HabitsContext";
+import Habits from "./components/Habits";
+import Historic from "./components/Historic";
 
 export default function App() {
 
@@ -23,7 +25,7 @@ export default function App() {
         }
     );
 
-    const [habits, setHabits] =useState([]);
+    const [habits, setHabits] = useState([]);
 
     return (
         <HabitsContext.Provider value={{habits, setHabits}}>
@@ -33,12 +35,12 @@ export default function App() {
                         <Route path="/" element={<Login />} />
                         <Route path="/cadastro" element={<Register />} />
                         <Route path="/hoje" element={<Today />} />
+                        <Route path="/habitos" element={<Habits />} />
+                        <Route path="/historico" element={<Historic />} />
                     </Routes>
                 </BrowserRouter>
             </UserContext.Provider>
         </HabitsContext.Provider>
-        
-           
     );
 }
 

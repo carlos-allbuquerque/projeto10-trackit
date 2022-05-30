@@ -4,16 +4,15 @@ import Footer from "./Footer";
 import styled from "styled-components";
 import "dayjs/locale/pt-br";
 import UserContext from "../contexts/UserContext";
-import HabitsContext from "../contexts/HabitsContext";
+
 import axios from "axios";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
+import TodayHabits from "./TodayHabits";
 
 export default function Today() {
 
-    console.log("cheguei");
-
     const {user} = useContext(UserContext);
-    const {habits, setHabits} = useContext(HabitsContext);
+    const [habits, setHabits] = useState([]);
 
     const dayjs = require("dayjs");
     dayjs.locale("pt-br");
@@ -38,11 +37,14 @@ export default function Today() {
             < Header />
             <Container>
                 <Title>{dayjs().format("dddd - DD/MM").replace("-feira", "")}</Title>
+                <h3>Nenhum hábito completo ainda</h3>
+                <TodayHabits habits={habits}/>
             </Container>
             <Footer />
         </Box>
     );
 }
+
 
 const Box = styled.div`
     background-color: #E5E5E5;
@@ -55,11 +57,18 @@ const Container = styled.div`
     padding: 0 20px 0 20px;
     margin-top: 70px;
     padding-top: 30px;
+
+    & h3 {
+        color: #BABABA;
+        font-size: 18px;
+        margin-bottom: 40px;
+    }
 `
 
 const Title = styled.h2`
     color: #126BA5;
     font-size: 23px;
+    margin-bottom: 5px;
 
 `
 const ButtonAdd = styled.button`
